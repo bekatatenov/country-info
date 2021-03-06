@@ -1,29 +1,5 @@
 'use strict'
 
-class Country {
-    name;
-    capital;
-    flag;
-    money;
-    region;
-
-    constructor(name, capital, flag, currencies, region) {
-        this.name = name;
-        this.capital = capital;
-        this.flag = flag;
-        this.currencies = currencies;
-        this.region = region;
-    }
-}
-
-let foundCountries = [];
-
-function createCountry(country) {
-    let c = new Country(country.name, country.capital, country.flag, country.currencies[0].name, country.region);
-    foundCountries.push(c);
-    return c;
-}
-
 function createCountryElem(country) {
     let elem = document.createElement('div');
     elem.setAttribute('id', 'card-id');
@@ -56,6 +32,9 @@ const form = document.getElementById('form-id');
 
 form.addEventListener('submit', formHandler);
 
+function removeFromInput() {
+    document.getElementById('inputPassword2').value = "";
+}
 
 function formHandler(e) {
     e.preventDefault();
@@ -78,4 +57,5 @@ function formHandler(e) {
             }
         });
     }
+    removeFromInput();
 }
