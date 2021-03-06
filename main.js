@@ -13,7 +13,7 @@ function createCountryElem(country) {
                 <p class="card-text">Region: ${country.region}</p>
                 <p class="card-text">Money: ${country.currencies[0].name}</p>
                 <a href="https://www.google.com/search?q=${country.name}" class="btn btn-primary" target="_blank">Google</a>
-                <a href="https://ru.m.wikipedia.org/wiki/${country.name}" class="btn btn-primary" target="_blank">Wiki</a>
+                <a href="https://wikipedia.org/wiki/${country.name}" class="btn btn-primary" target="_blank">Wiki</a>
             </div>
         </div>`;
 
@@ -36,6 +36,11 @@ function removeFromInput() {
     document.getElementById('inputPassword2').value = "";
 }
 
+function setFocus() {
+    document.getElementById("inputPassword2").focus();
+}
+
+
 function formHandler(e) {
     e.preventDefault();
     const form = e.target;
@@ -48,7 +53,6 @@ function formHandler(e) {
             if (result.ok) {
                 result.json().then(data => {
                     let c = data[0];
-                    // var country = createCountry(result);
                     var htmlDivElement = createCountryElem(c);
                     addElemToHtml(htmlDivElement);
                 });
@@ -58,4 +62,5 @@ function formHandler(e) {
         });
     }
     removeFromInput();
+    setFocus();
 }
